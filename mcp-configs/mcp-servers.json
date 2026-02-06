@@ -80,9 +80,47 @@
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/your/projects"],
       "description": "Filesystem operations (set your path)"
+    },
+    "_z_ai_mcp_servers": {
+      "zai-mcp-server": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@z_ai/mcp-server"],
+        "env": {
+          "Z_AI_API_KEY": "YOUR_Z_AI_API_KEY",
+          "Z_AI_MODE": "ZAI"
+        },
+        "description": "Z.AI Vision - 图片/视频分析、OCR、UI转代码 (8个工具)"
+      },
+      "zai-brave-search": {
+        "type": "http",
+        "url": "https://api.z.ai/api/mcp/search/mcp",
+        "headers": {
+          "Authorization": "Bearer YOUR_Z_AI_API_KEY"
+        },
+        "description": "Z.AI Search - 联网搜索 (Brave)"
+      },
+      "zai-web-reader": {
+        "type": "streamable-http",
+        "url": "https://api.z.ai/api/mcp/web_reader/mcp",
+        "headers": {
+          "Authorization": "Bearer YOUR_Z_AI_API_KEY"
+        },
+        "description": "Z.AI Reader - 网页内容读取"
+      },
+      "zai-zread": {
+        "type": "streamable-http",
+        "url": "https://api.z.ai/api/mcp/zread/mcp",
+        "headers": {
+          "Authorization": "Bearer YOUR_Z_AI_API_KEY"
+        },
+        "description": "Z.AI Zread - GitHub仓库文档搜索"
+      }
     }
   },
   "_comments": {
+    "z_ai_note": "Z.AI MCP 服务器 - 需要从 https://open.bigmodel.cn/ 获取 API Key",
+    "zai-mcp-server": "提供 8 个工具: ui_to_artifact, extract_text_from_screenshot, diagnose_error_screenshot, understand_technical_diagram, analyze_data_visualization, ui_diff_check, image_analysis, video_analysis",
     "usage": "Copy the servers you need to your ~/.claude.json mcpServers section",
     "env_vars": "Replace YOUR_*_HERE placeholders with actual values",
     "disabling": "Use disabledMcpServers array in project config to disable per-project",
